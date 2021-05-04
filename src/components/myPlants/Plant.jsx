@@ -5,22 +5,13 @@ import { editPlant } from "../../store/actions/plantActions";
 
 const Plant = ({ plant, plantEditor, plantDelete }) => {
   const dispatch = useDispatch();
-  // const waterCalculator = () => {
-  //   let dayCounter = Math.floor((Date.now() - 1617146130296) / 86400000);
-  //   let daysToWater = plant.h2oFrequency - (dayCounter % plant.h2oFrequency);
-  //   if (dayCounter % plant.h2oFrequency === 0) {
-  //     return "Water Today";
-  //   } else {
-  //     return daysToWater;
-  //   }
-  // };
 
   const waterCalculator = () => {
     let dayCounter = Math.floor((Date.now() - plant.baseDate) / 86400000);
-    let daysToWater = plant.h2oFrequency - (dayCounter % plant.h2oFrequency);
+    let daysToWater = plant.water_freq - (dayCounter % plant.water_freq);
     if (Date.now() - plant.baseDate < 86400000) {
-      return plant.h2oFrequency;
-    } else if (dayCounter % plant.h2oFrequency === 0) {
+      return plant.water_freq;
+    } else if (dayCounter % plant.water_freq === 0) {
       return "Water Today";
     } else {
       return daysToWater;
@@ -32,8 +23,8 @@ const Plant = ({ plant, plantEditor, plantDelete }) => {
       editPlant({
         nickname: plant.nickname,
         species: plant.species,
-        h2oFrequency: plant.h2oFrequency,
-        plantId: plant.plantId,
+        water_freq: plant.water_freq,
+        id: plant.id,
         img: plant.img,
         baseDate: Date.now(),
       })
@@ -41,10 +32,9 @@ const Plant = ({ plant, plantEditor, plantDelete }) => {
   };
 
   let waterResult = waterCalculator();
-
   return (
     <PlantStyles>
-      <div className="cardContainer" key={plant.plantId}>
+      <div className="cardContainer" key={plant.id}>
         <img
           src={plant.img ? plant.img : "https://bit.ly/3frwdyF"}
           alt="personal plant"
@@ -53,7 +43,7 @@ const Plant = ({ plant, plantEditor, plantDelete }) => {
         <h2 className="plantNickname">{plant.nickname}</h2>
         <h3 className="plantSpecies">{plant.species}</h3>
         <p className="watering">
-          Water Frequency: every {plant.h2oFrequency} days
+          Water Frequency: every {plant.water_freq} days
         </p>
         <p className="watering">
           Days until water: <br></br> <span> {waterResult} </span>{" "}
@@ -65,7 +55,7 @@ const Plant = ({ plant, plantEditor, plantDelete }) => {
         <div className="buttonContainer">
           <button
             className="deleteBut"
-            onClick={() => plantDelete(plant.plantId)}
+            onClick={() => plantDelete(plant.id)}
           >
             {" "}
             DELETE{" "}

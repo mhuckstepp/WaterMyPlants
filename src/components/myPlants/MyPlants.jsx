@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUser } from "../../store/actions/loginActions";
 import { deletePlant, fetchPlants } from "../../store/actions/plantActions";
 import AddForm from "../addForm/AddForm";
 import EditForm from "../editForm/EditForm";
@@ -9,22 +8,14 @@ import MyPlantsStyles from "./myPlantsStyling";
 
 const MyPlants = () => {
   const { myPlants, isLoading } = useSelector((state) => state.plantReducer);
-  const user = useSelector((state) => state.loginReducer.userData);
   const dispatch = useDispatch();
   const [adding, setAdding] = useState(false);
   const [editing, setEditing] = useState(false);
   const [plantEditing, setPlantEditing] = useState(null);
 
   useEffect(() => {
-    dispatch(fetchUser());
+    dispatch(fetchPlants());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (user.userid) {
-
-      dispatch(fetchPlants(user.userid));
-    }
-  }, [user.userid, dispatch]);
 
   const plantEditor = (plant) => {
     setAdding(false);
@@ -37,8 +28,8 @@ const MyPlants = () => {
     setAdding(!adding);
   };
 
-  const plantDelete = (plantId) => {
-    dispatch(deletePlant(plantId));
+  const plantDelete = (id) => {
+    dispatch(deletePlant(id));
   };
 
   useEffect(() => {
@@ -76,7 +67,7 @@ const MyPlants = () => {
                   plant={plant}
                   plantEditor={plantEditor}
                   plantDelete={plantDelete}
-                  key={plant.plantId}
+                  key={plant.id}
                 />
               );
             })

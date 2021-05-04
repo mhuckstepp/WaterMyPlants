@@ -10,13 +10,13 @@ import {
 
 const initialData = {
   myPlants: [
-    // {
-    //   // id: 500,
-    //   // nickname: "",
-    //   // species: "",
-    //   // h2oFrequency: 0,
-    //   // // image: (optional)
-    // },
+    {
+      id: 500,
+      nickname: "Your first plant",
+      species: "Succulent",
+      water_freq: 10,
+      // image: (optional)
+    },
   ],
   isLoading: false,
   errorMessage: "",
@@ -44,7 +44,7 @@ export const plantReducer = (state = initialData, action) => {
       return {
         ...state,
         myPlants: state.myPlants.map((plant) => {
-          if (plant.plantId === action.payload.plantId) {
+          if (plant.id === action.payload.id) {
             return action.payload;
           } else {
             return plant;
@@ -55,7 +55,7 @@ export const plantReducer = (state = initialData, action) => {
       return {
         ...state,
         myPlants: state.myPlants.filter(
-          (plant) => plant.plantId !== action.payload
+          (plant) => plant.id !== action.payload
         ),
       };
     default:

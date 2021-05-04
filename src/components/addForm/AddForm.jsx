@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useFormik } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import { addPlant } from "../../store/actions/plantActions";
 import plantSchema from "../validation/plantSchema";
 import AddFormStyles from "./addStyles";
@@ -8,92 +8,54 @@ import AddFormStyles from "./addStyles";
 const AddForm = ({ setAdding }) => {
   const dispatch = useDispatch();
 
-  const formik = useFormik({
-    initialValues: {
-      nickname: "",
-      species: "",
-      h2oFrequency: "",
-      img: "",
-      baseDate: Date.now(),
-    },
-    validationSchema: plantSchema,
-    onSubmit: (values) => {
-      dispatch(addPlant(values));
-      setAdding(false);
-    },
-  });
+  const cancelForm = (e) => {
+    e.preventDefault()
+    setAdding(false)
+  }
 
   return (
     <AddFormStyles>
       <div className="addFormContainer"></div>
       <div className="childAddContainer">
         <h1> Add a new plant</h1>
-        <form onSubmit={formik.handleSubmit}>
+        <Formik
+              initialValues={{
+      nickname: "",
+      species: "",
+      water_freq: "",
+      img: "",
+      baseDate: Date.now(),
+    }}
+    validationSchema={plantSchema}
+    onSubmit={ (values) => {
+      console.log('run sub');
+      dispatch(addPlant(values));
+      setTimeout(setAdding(false), 2000);
+    }}
+            >
+        <Form>
           <div className="innerForm">
-            <label htmlFor="nickname"> </label>
-            Nickname:
-            <input
-              name="nickname"
-              id="nickname"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.nickname}
-              onBlur={formik.handleBlur}
-            />
-            <span className="error">
-              {formik.touched.nickname && formik.errors.nickname && (
-                <p>{formik.errors.nickname}</p>
-              )}{" "}
-            </span>
-            <label htmlFor="species"> </label>
-            Species:
-            <input
-              name="species"
-              id="species"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.species}
-              onBlur={formik.handleBlur}
-            />
-            <span className="error">
-              {formik.touched.species && formik.errors.species && (
-                <p>{formik.errors.species}</p>
-              )}{" "}
-            </span>
-            <label htmlFor="h2oFrequency"> </label>
-            Next watering (days):
-            <input
-              name="h2oFrequency"
-              id="h2oFrequency"
-              type="number"
-              onChange={formik.handleChange}
-              value={formik.values.h2oFrequency}
-              onBlur={formik.handleBlur}
-            />
-            <label htmlFor="img"> </label>
-            Add an image:
-            <input
-              name="img"
-              id="img"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.img}
-              onBlur={formik.handleBlur}
-            />
-            <span className="error">
-              {formik.touched.h2oFrequency && formik.errors.h2oFrequency && (
-                <p>{formik.errors.h2oFrequency}</p>
-              )}{" "}
-            </span>
+            <label htmlFor="nickname"> Nickname: </label>
+            <Field name="nickname" type="text" />
+                <ErrorMessage name="nickname" />
+            <label htmlFor="species"> Species: </label>
+            <Field name="species" type="text" />
+                <ErrorMessage name="species" />
+            
+            <label htmlFor="water_freq"> Next watering (days): </label>
+            <Field name="water_freq" type="number" />
+
+            <label htmlFor="img">   Add an image: </label>
+            <Field name="img" type="text" />
           </div>
           <div className="buttonContainer">
-            <button onClick={() => setAdding(false)}>Cancel</button>
+            <button type="button" onClick={(e) => cancelForm(e)}>Cancel</button>
             <button type="submit">Submit</button>
           </div>
-        </form>
-
+        </Form>
+        </Formik>
         <img src="https://bit.ly/2QMRGYs" alt="plants" />
-      </div>
+    </div>
     </AddFormStyles>
   );
 };

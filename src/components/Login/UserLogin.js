@@ -3,28 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../store/actions/loginActions";
 import { useHistory, Link } from "react-router-dom";
 import UserLoginStyles from "./UserLoginStyles";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import userSchema from "../validation/formSchema";
 
 const Login = (props) => {
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
   const dispatch = useDispatch();
   const { isLoggedIn, loadingLogin, loginError } = useSelector(
     (state) => state.loginReducer
   );
   let history = useHistory();
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(setUserData(credentials));
-  };
-
-  const handleChange = (e) =>
-    setCredentials({
-      ...credentials,
-      [e.target.name]: e.target.value,
-    });
 
   if (isLoggedIn) {
     history.push("/myplants");
@@ -49,27 +36,28 @@ const Login = (props) => {
             schedule!{" "}
           </p>
           <h2 className="loginHeader">Login to your account</h2>
-          <form className="form" onSubmit={submitHandler}>
-            <label>
-            Email:
-              <input
-                type="text"
-                name="email"
-                value={credentials.email}
-                onChange={handleChange}
-              />
-            </label>
-            <label>
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={credentials.password}
-                onChange={handleChange}
-              />
-            </label>
+          <Formik 
+              initialValues={{
+          email: "",
+          password: "",
+          }}
+    validationSchema={userSchema}
+    onSubmit={ (values) => {
+      dispatch(setUserData(values));
+    }}
+          >
+          <Form>
+          <div className='form'>
+          <label htmlFor="email"> Email: </label>
+            <Field name="email" type="text" autocomplete='email' />
+                <label htmlFor="password"> Password: </label>
+            <Field name="password" type="password" autocomplete='current-password' />
             <button type="submit">Login</button>
-          </form>
+                <ErrorMessage name="email" />
+                <ErrorMessage name="password" />
+                </div>
+          </Form>
+          </Formik>
 
           <Link to="/signup">Signup</Link>
         </div>

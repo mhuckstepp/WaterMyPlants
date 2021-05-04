@@ -11,11 +11,9 @@ export const DELETE_PLANT = "DELETE_PLANT";
 export const fetchPlants = (id) => {
   return (dispatch) => {
     dispatch({ type: START_LOAD_PLANTS });
-    // console.log("fetchplants actions");
     axiosWithAuth()
-      .get(`https://watermyplant-tt7.herokuapp.com/plants/${id}`)
+      .get(`/plants`)
       .then((res) => {
-        // console.log(res.data);
         dispatch({ type: LOADED_PLANTS, payload: res.data });
       })
       .catch((err) => {
@@ -29,7 +27,7 @@ export const addPlant = (plant) => {
   return (dispatch) => {
     console.log("Add Plant actions", plant);
     axiosWithAuth()
-      .post("https://watermyplant-tt7.herokuapp.com/plants/newplant", plant)
+      .post(`/plants`, plant)
       .then((res) => {
         console.log(res);
         dispatch({ type: ADD_PLANT, payload: res.data });
@@ -43,14 +41,13 @@ export const addPlant = (plant) => {
 
 export const editPlant = (plant) => {
   return (dispatch) => {
-    console.log("Edit Plant actions", plant);
     axiosWithAuth()
-      .patch(
-        `https://watermyplant-tt7.herokuapp.com/plants/plant/${plant.plantId}`,
+      .put(
+        `/plants/${plant.id}`,
         plant
       )
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         dispatch({ type: EDIT_PLANT, payload: res.data });
       })
       .catch((err) => {
@@ -59,14 +56,13 @@ export const editPlant = (plant) => {
   };
 };
 
-export const deletePlant = (plantId) => {
+export const deletePlant = (id) => {
   return (dispatch) => {
-    console.log("DELETE Plant actions", plantId);
     axiosWithAuth()
-      .delete(`https://watermyplant-tt7.herokuapp.com/plants/plant/${plantId}`)
+      .delete(`plants/${id}`)
       .then((res) => {
         // console.log(res);
-        dispatch({ type: DELETE_PLANT, payload: plantId });
+        dispatch({ type: DELETE_PLANT, payload: id });
       })
       .catch((err) => {
         console.log(err);

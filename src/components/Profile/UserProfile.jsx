@@ -12,7 +12,6 @@ const UserProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    // console.log("fetchUSER dispatched");
     dispatch(fetchUser());
   }, [dispatch]);
 
@@ -36,8 +35,7 @@ const UserProfile = () => {
           {isEditing ? (
             <Formik
               initialValues={{
-                username: loginInfo.userData.username,
-                phoneNumber: loginInfo.userData.phoneNumber,
+                username: loginInfo.userData.email,
                 password: loginInfo.userData.password,
               }}
               validationSchema={SignupSchema}
@@ -47,9 +45,9 @@ const UserProfile = () => {
               }}
             >
               <Form className="formcontainer">
-                <label htmlFor="username">Username</label>
-                <Field name="username" type="text" />
-                <ErrorMessage name="username" />
+                <label htmlFor="email">email</label>
+                <Field name="email" type="text" />
+                <ErrorMessage name="email" />
 
                 <label htmlFor="password">Password</label>
                 <Field name="password" type="text" />
@@ -62,8 +60,7 @@ const UserProfile = () => {
             </Formik>
           ) : (
             <div>
-              <p> Username: {loginInfo.userData.username} </p>
-              <p> Phone Number: {loginInfo.userData.phoneNumber} </p>
+              <p> email: {loginInfo.userData.email} </p>
               <p> Password: {loginInfo.userData.password} </p>
               <button onClick={() => setIsEditing(true)}>
                 {" "}

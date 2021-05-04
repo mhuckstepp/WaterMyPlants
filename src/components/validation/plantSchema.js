@@ -9,7 +9,7 @@ const plantSchema = yup.object().shape({
     .string()
     .required("species is required")
     .min(3, "species must be 3 characters"),
-  h2oFrequency: yup.number().required("h20Frequency is required"),
+  water_freq: yup.number().required("Watering Frequency is required"),
 });
 
 export default plantSchema;

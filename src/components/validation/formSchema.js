@@ -1,14 +1,13 @@
 import * as yup from "yup";
 
 export default yup.object().shape({
-  username: yup
+  email: yup
     .string()
-    .required("Username is required")
-    .min(5, "Username must be a minimum of 5 characters long"),
-  phoneNumber: yup.string().required("Phone number is required"),
+    .email()
+    .required("email is required")
+    .min(5, "Email must be a minimum of 5 characters long"),
   password: yup
     .string()
     .required("Password is required")
-    .min(4, "Password must be 8 characters long"),
-  // going to figure out how to make it mix of numbers and letters
+    .min(4, "Password must be 4 characters long"),
 });
