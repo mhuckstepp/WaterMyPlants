@@ -6,7 +6,7 @@ import UserLoginStyles from "./UserLoginStyles";
 
 const Login = (props) => {
   const [credentials, setCredentials] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const dispatch = useDispatch();
@@ -51,11 +51,11 @@ const Login = (props) => {
           <h2 className="loginHeader">Login to your account</h2>
           <form className="form" onSubmit={submitHandler}>
             <label>
-              Username:
+            Email:
               <input
                 type="text"
-                name="username"
-                value={credentials.username}
+                name="email"
+                value={credentials.email}
                 onChange={handleChange}
               />
             </label>

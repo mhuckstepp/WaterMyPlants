@@ -12,10 +12,8 @@ import {
 
 const initialValue = {
   userData: {
-    username: "",
+    email: "",
     password: "",
-    phoneNumber: 0,
-    //plantList: [],
   },
   loadingLogin: false,
   loginError: "",

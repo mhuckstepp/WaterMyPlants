@@ -15,20 +15,10 @@ export const setUserData = (user) => {
   return (dispatch) => {
     dispatch({ type: LOG_IN_START });
     axios
-      .post(
-        "https://watermyplant-tt7.herokuapp.com/login",
-        `grant_type=password&username=${user.username}&password=${user.password}`,
-        {
-          headers: {
-            // btoa is converting our client id/client secret into base64
-            Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        }
-      )
+      .post("http://localhost:5000/api/auth/login", user)
       .then((res) => {
         // console.log(res.data);
-        localStorage.setItem("token", res.data.access_token);
+        localStorage.setItem("token", res.data.token);
         dispatch({ type: LOG_IN_SUCCESS });
       })
       .catch((err) => {
@@ -57,7 +47,7 @@ export const signInFunc = (user) => {
   return (dispatch) => {
     dispatch({ type: SIGNIN_IN_START });
     axios
-      .post("https://watermyplant-tt7.herokuapp.com/createnewuser", user)
+      .post("http://localhost:5000/api/auth/register", user)
       .then((res) => {
         // console.log(res);
         localStorage.setItem("token", res.data.access_token);

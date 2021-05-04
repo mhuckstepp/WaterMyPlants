@@ -16,14 +16,12 @@ const MyPlants = () => {
   const [plantEditing, setPlantEditing] = useState(null);
 
   useEffect(() => {
-    // console.log("fetchUSER dispatched");
     dispatch(fetchUser());
   }, [dispatch]);
 
   useEffect(() => {
-    // console.log(user.userid);
     if (user.userid) {
-      // console.log("fetchplants dispatched");
+
       dispatch(fetchPlants(user.userid));
     }
   }, [user.userid, dispatch]);

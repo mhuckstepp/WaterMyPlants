@@ -6,9 +6,8 @@ import SignupStyles from "./SignupStyles";
 
 const SignUp = (props) => {
   const [credentials, setCredentials] = useState({
-    username: "",
+    email: "",
     password: "",
-    phoneNumber: "",
   });
   const dispatch = useDispatch();
   let history = useHistory();
@@ -36,11 +35,11 @@ const SignUp = (props) => {
           <h2 className="signupHeader">Sign-up Today!</h2>
           <form className="form" onSubmit={submitHandler}>
             <label>
-              Username:
+              email:
               <input
                 type="text"
-                name="username"
-                value={credentials.username}
+                name="email"
+                value={credentials.email}
                 onChange={handleChange}
               />
             </label>
@@ -50,15 +49,6 @@ const SignUp = (props) => {
                 type="password"
                 name="password"
                 value={credentials.password}
-                onChange={handleChange}
-              />
-            </label>
-            <label>
-              Mobile Phone Number:
-              <input
-                type="phoneNumber"
-                name="phoneNumber"
-                value={credentials.phoneNumber}
                 onChange={handleChange}
               />
             </label>
