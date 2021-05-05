@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../store/actions/loginActions";
 import { useHistory, Link } from "react-router-dom";

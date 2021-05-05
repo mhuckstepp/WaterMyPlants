@@ -25,11 +25,9 @@ export const fetchPlants = (id) => {
 
 export const addPlant = (plant) => {
   return (dispatch) => {
-    console.log("Add Plant actions", plant);
     axiosWithAuth()
       .post(`/plants`, plant)
       .then((res) => {
-        console.log(res);
         dispatch({ type: ADD_PLANT, payload: res.data });
       })
       .catch((err) => {
@@ -47,7 +45,6 @@ export const editPlant = (plant) => {
         plant
       )
       .then((res) => {
-        console.log(res.data);
         dispatch({ type: EDIT_PLANT, payload: res.data });
       })
       .catch((err) => {
@@ -61,7 +58,6 @@ export const deletePlant = (id) => {
     axiosWithAuth()
       .delete(`plants/${id}`)
       .then((res) => {
-        // console.log(res);
         dispatch({ type: DELETE_PLANT, payload: id });
       })
       .catch((err) => {

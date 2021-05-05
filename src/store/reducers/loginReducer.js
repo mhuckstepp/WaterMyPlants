@@ -21,7 +21,6 @@ const initialValue = {
 };
 
 export const loginReducer = (state = initialValue, action) => {
-  // console.log(action, "login reducer");
   switch (action.type) {
     case LOG_IN_START:
       return {
@@ -66,7 +65,6 @@ export const loginReducer = (state = initialValue, action) => {
         loginError: action.payload,
       };
     case SIGN_OUT:
-      // console.log("SIGNOUT REDUCER");
       return {
         ...state,
         userData: "",

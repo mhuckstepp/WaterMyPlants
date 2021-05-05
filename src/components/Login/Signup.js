@@ -15,7 +15,7 @@ const SignUp = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(signInFunc(credentials));
-    console.log("submitted");
+
   };
 
   const handleChange = (e) =>

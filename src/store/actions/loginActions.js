@@ -14,7 +14,7 @@ export const setUserData = (user) => {
   return (dispatch) => {
     dispatch({ type: LOG_IN_START });
     axios
-      .post("http://localhost:5000/api/auth/login", user)
+      .post("https://mywaterplants.herokuapp.com/api/auth/login", user)
       .then((res) => {
         // console.log(res.data);
         localStorage.setItem("token", res.data.token);
@@ -45,9 +45,8 @@ export const signInFunc = (user) => {
   return (dispatch) => {
     dispatch({ type: SIGNIN_IN_START });
     axios
-      .post("http://localhost:5000/api/auth/register", user)
+      .post("https://mywaterplants.herokuapp.com/api/auth/register", user)
       .then((res) => {
-        // console.log(res);
         localStorage.setItem("token", res.data.access_token);
         dispatch({ type: SIGNIN_IN_SUCCESS });
       })

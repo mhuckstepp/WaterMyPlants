@@ -40,7 +40,6 @@ export const plantReducer = (state = initialData, action) => {
     case FAILED_ADDED_PLANT:
       return { ...state, errorMessage: action.payload };
     case EDIT_PLANT:
-      console.log(state.myPlants);
       return {
         ...state,
         myPlants: state.myPlants.map((plant) => {

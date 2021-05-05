@@ -24,7 +24,6 @@ export default function Login(props) {
         }
       )
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.data.access_token);
         history.push("/myplants");
       });
