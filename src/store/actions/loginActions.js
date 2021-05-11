@@ -47,7 +47,8 @@ export const signInFunc = (user) => {
     axios
       .post("https://mywaterplants.herokuapp.com/api/auth/register", user)
       .then((res) => {
-        localStorage.setItem("token", res.data.access_token);
+        console.log(res)
+        localStorage.setItem("token", res.data.token);
         dispatch({ type: SIGNIN_IN_SUCCESS });
       })
       .catch((err) => {
