@@ -4,7 +4,7 @@ export default yup.object().shape({
   email: yup
     .string()
     .email()
-    .required("email is required")
+    .required("Email is required")
     .min(5, "Email must be a minimum of 5 characters long"),
   password: yup
     .string()

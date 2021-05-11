@@ -30,23 +30,20 @@ const SignupStyles = styled.div`
     align-items: center;
     padding-bottom: 5px;
   }
-  .form {
+  form {
+    width: 50%;
+    height: 15rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding-bottom: 5px;
-    border: 1px solid red;
-    margin: 0 auto;
+    justify-content: space-around;
   }
-  label {
-    margin-bottom: 20px;
+  .link {
+   text-decoration: none; 
   }
-  a {
-    text-decoration: none;
+
+  .error {
+   font-size: 1.3rem; 
   }
-  a:visited {
-  color: green;
-}
 `
 
 export default SignupStyles;
