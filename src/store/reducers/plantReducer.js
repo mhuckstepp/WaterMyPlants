@@ -12,9 +12,10 @@ const initialData = {
   myPlants: [
     {
       id: 500,
-      nickname: "Your first plant",
-      species: "Succulent",
+      nickname: " Add your first plant using the button above!",
+      species: "Your plant here!",
       water_freq: 10,
+      base_date: '5646546546'
       // image: (optional)
     },
   ],

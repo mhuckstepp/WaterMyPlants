@@ -34,11 +34,12 @@ const SignupStyles = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
     padding-bottom: 5px;
+    border: 1px solid red;
+    margin: 0 auto;
   }
   label {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   a {
     text-decoration: none;

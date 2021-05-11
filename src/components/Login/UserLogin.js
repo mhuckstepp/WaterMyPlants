@@ -23,7 +23,7 @@ const Login = (props) => {
         <div className="textContainer">
           {loadingLogin ? <span className="loading"> Loading... </span> : null}
           {loginError ? (
-            <span className="error">
+            <span className="error" style={{color: 'red'}}>
               {" "}
               Please check your Username and Password and try again
             </span>
