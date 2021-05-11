@@ -35,6 +35,7 @@ export const loginReducer = (state = initialValue, action) => {
         isLoggedIn: true,
       };
     case LOG_IN_FAIL:
+      console.log("run login fail");
       return {
         ...state,
         loadingLogin: false,

@@ -21,7 +21,8 @@ export const setUserData = (user) => {
         dispatch({ type: LOG_IN_SUCCESS });
       })
       .catch((err) => {
-        dispatch({ type: LOG_IN_FAIL, payload: err.response.data.error });
+        console.log(err)
+        dispatch({ type: LOG_IN_FAIL, payload: 'fail' });
       });
   };
 };
@@ -47,7 +48,6 @@ export const signInFunc = (user) => {
     axios
       .post("https://mywaterplants.herokuapp.com/api/auth/register", user)
       .then((res) => {
-        console.log(res)
         localStorage.setItem("token", res.data.token);
         dispatch({ type: SIGNIN_IN_SUCCESS });
       })

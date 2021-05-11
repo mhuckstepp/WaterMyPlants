@@ -1,9 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useFormik } from 'formik';
 import { addPlant } from "../../store/actions/plantActions";
 import plantSchema from "../validation/plantSchema";
 import AddFormStyles from "./addStyles";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const AddForm = ({ setAdding }) => {
   const dispatch = useDispatch();
@@ -13,46 +15,56 @@ const AddForm = ({ setAdding }) => {
     setAdding(false)
   }
 
-  return (
-    <AddFormStyles>
-      <div className="addFormContainer"></div>
-      <div className="childAddContainer">
-        <h1> Add a new plant</h1>
-        <Formik
-              initialValues={{
+  const formik = useFormik({
+    initialValues:{
       nickname: "",
       species: "",
       water_freq: "",
       img: "",
       baseDate: Date.now(),
-    }}
-    validationSchema={plantSchema}
-    onSubmit={ (values) => {
-      dispatch(addPlant(values));
-      setTimeout(setAdding(false), 2000);
-    }}
-            >
-        <Form>
-          <div className="innerForm">
-            <label htmlFor="nickname"> Nickname: </label>
-            <Field name="nickname" type="text" />
-                <ErrorMessage name="nickname" />
-            <label htmlFor="species"> Species: </label>
-            <Field name="species" type="text" />
-                <ErrorMessage name="species" />
-            
-            <label htmlFor="water_freq"> Next watering (days): </label>
-            <Field name="water_freq" type="number" />
+    },
+      validationSchema: plantSchema,
+      onSubmit: (values) => {
+        dispatch(addPlant(values));
+        setTimeout(setAdding(false), 2000);
+      },
+  });
 
-            <label htmlFor="img">   Add an image: </label>
-            <Field name="img" type="text" />
+  return (
+    <AddFormStyles>
+      <div className="addFormContainer"></div>
+      <div className="childAddContainer">
+        <h1> Add a new plant</h1>
+        <form onSubmit={formik.handleSubmit}>
+          <div className="innerForm">
+          <TextField
+              id="nickname" 
+              name="nickname" 
+              label="Nickname"
+              type="text" 
+              value={formik.values.nickname}
+              onChange={formik.handleChange}
+              error={formik.touched.nickname && Boolean(formik.errors.nickname)}
+              helperText={formik.touched.nickname && formik.errors.nickname}
+            />
+             <TextField
+              id="species" 
+              name="species" 
+              label="Species"
+              type="text" 
+              value={formik.values.species}
+              onChange={formik.handleChange}
+              error={formik.touched.species && Boolean(formik.errors.species)}
+              helperText={formik.touched.species && formik.errors.species}
+            />
+            <TextField name="water_freq" type="number" label='Next watering (days):' />
+            <TextField name="img" label="Add an image:" type="text" />
           </div>
           <div className="buttonContainer">
-            <button type="button" onClick={(e) => cancelForm(e)}>Cancel</button>
-            <button type="submit">Submit</button>
+            <Button type="button" onClick={(e) => cancelForm(e)}>Cancel</Button>
+            <Button color="primary" variant="contained" fullWidth type="submit">Submit</Button>
           </div>
-        </Form>
-        </Formik>
+        </form>
         <img src="https://bit.ly/2QMRGYs" alt="plants" />
     </div>
     </AddFormStyles>
