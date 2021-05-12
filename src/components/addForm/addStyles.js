@@ -26,35 +26,13 @@ const AddFormStyles = styled.div`
     border-radius: 20px;
     box-sizing: border-box;
   }
-  form {
-  }
-  .errors {
-    color: red;
-  }
   .innerForm {
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-  }
-  label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  input {
-    width: 10rem;
-    border-radius: 3px;
-    height: 1.3rem;
-    text-align: center;
-    border: 1px solid lightgray;
-  }
-  img {
-    height: 40%;
-    border-radius: 15px;
-    padding-top: 2%;
-    padding-bottom: 10px;
-    /* max-width: 60%; */
+    margin: 0 auto;
   }
   button {
     width: 6rem;

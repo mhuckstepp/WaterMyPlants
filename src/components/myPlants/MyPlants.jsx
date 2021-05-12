@@ -5,6 +5,26 @@ import AddForm from "../addForm/AddForm";
 import EditForm from "../editForm/EditForm";
 import Plant from "./Plant";
 import MyPlantsStyles from "./myPlantsStyling";
+import Button from '@material-ui/core/Button';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#00FF00',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
+
 
 const MyPlants = () => {
   const { myPlants, isLoading } = useSelector((state) => state.plantReducer);
@@ -47,16 +67,16 @@ const MyPlants = () => {
   };
 
   return (
-    <MyPlantsStyles>
+    <MyPlantsStyles >
       {adding ? (
-        <AddForm setAdding={setAdding} onKeyDown={handleKeyDown} />
+        <AddForm setAdding={setAdding} />
       ) : null}
-      <div className="myPlantsContainer">
-        <h1> MyPlants </h1>
-        <button onClick={() => plantAdder()}> Add a plant</button>
         {editing ? (
           <EditForm plant={plantEditing} setEditing={setEditing} />
         ) : null}
+      <div className="myPlantsContainer" theme={theme}>
+        <h1> MyPlants </h1>
+        <button className='addPlant' onClick={() => plantAdder()}> Add a plant</button>
         <div className="plantContainer">
           {isLoading ? (
             <div class="loader">Loading...</div>

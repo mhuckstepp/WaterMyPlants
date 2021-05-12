@@ -33,6 +33,24 @@ const MyPlantsStyles = styled.div`
     align-items: center;
     padding-bottom: 5px;
   }
+  .addPlant {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 28px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: copy;
+  border-radius:10px;
+  transition-duration: 0.4s;
+}
+
+.addPlant:hover {
+  background-color: white; /* Green */
+  color: #4CAF50;
+}
   label {
     margin-bottom: 10px;
   }

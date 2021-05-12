@@ -4,7 +4,7 @@ const plantSchema = yup.object().shape({
   nickname: yup
     .string()
     .required("nickname is required")
-    .min(2, "nickname must be a minimum of 8 characters long"),
+    .min(2, "nickname must be a minimum of 2 characters long"),
   species: yup
     .string()
     .required("species is required")
