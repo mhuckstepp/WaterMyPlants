@@ -76,8 +76,8 @@ const Login = (props) => {
               Submit
             </Button>
           </form>
-          <Link to="/">
-          <p className='link'> If you are new, Signup here! </p>
+          <Link to="/signup">
+          If you are new, click here to Signup! 
           </Link>
         </div>
       </div>

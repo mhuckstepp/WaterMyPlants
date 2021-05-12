@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useFormik } from 'formik';
 import { editUserData } from "../../store/actions/editUserActions";
-import SignupSchema from "../validation/formSchema";
+import userSchema from "../validation/formSchema";
 import ProfileStyles from "./profileStyling";
 import { fetchUser } from "../../store/actions/loginActions";
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 
@@ -30,6 +31,16 @@ const UserProfile = () => {
       setIsEditing(false);
     }
   };
+  const formik = useFormik({
+    initialValues: {
+      username: loginInfo.userData.email,
+      password: loginInfo.userData.password,
+      },
+      validationSchema: userSchema,
+      onSubmit: (values) => {
+        dispatch(editUserData(values));
+    },
+  });
 
   if(!loginInfo.userData.email) {
     return (
@@ -41,39 +52,46 @@ const UserProfile = () => {
     )
   }
 
+
   return (
     <div>
       <ProfileStyles>
         <div className="cardContainer">
           {isEditing ? (
-            <Formik
-              initialValues={{
-                username: loginInfo.userData.email,
-                password: loginInfo.userData.password,
-              }}
-              validationSchema={SignupSchema}
-              onSubmit={(values) => {
-                dispatch(editUserData(loginInfo.userData.userid, values));
-              }}
-            >
-              <Form className="formcontainer">
-                <label htmlFor="email">email</label>
-                <Field name="email" type="text" />
-                <ErrorMessage name="email" />
+               <form onSubmit={formik.handleSubmit} className="formcontainer" >
+               <TextField
+              fullWidth 
+              id="email" 
+              name="email" 
+              label="Email"
+              type="text" 
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
 
-                <label htmlFor="password">Password</label>
-                <Field name="password" type="text" />
-                <ErrorMessage name="password" />
+        <TextField
+              fullWidth 
+              id="password" 
+              name="password" 
+              label="Password"
+              type="password" 
+              autoComplete='password'
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+            />
 
                 <Button onClick={() => setIsEditing(false)}> Cancel </Button>
 
                 <Button type="submit">Submit</Button>
-              </Form>
-            </Formik>
+              </form>
           ) : (
             <div>
-              <p> email: {loginInfo.userData.email} </p>
-              <p> Password: {loginInfo.userData.password} </p>
+              <p> Email: {loginInfo.userData.email} </p>
+              <p> Password:   ***** </p>
               <Button onClick={() => setIsEditing(true)}>
                 {" "}
                 Edit User Info

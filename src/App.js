@@ -6,12 +6,15 @@ import Login from "./components/Login/UserLogin";
 import SignUp from "./components/Login/Signup";
 import UserProfile from "./components/Profile/UserProfile";
 import PrivateRoute from "./utils/PrivateRoute";
+import { useSelector } from "react-redux";
 
 function App() {
+  
+  const state = useSelector((state) => state.loginReducer);
+  
   return (
     <div className="App">
-      <NavBar />
-      <h1>Water my plants</h1>
+      {state.isLoggedIn ? <NavBar /> : null}
       <Switch>
         <Route exact path="/">
           <Login />
