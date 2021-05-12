@@ -8,6 +8,7 @@ export const editUserData = (id, user) => {
       .put(`/auth`, user)
       .then((res) => {
         console.log(res);
+        localStorage.setItem("token", res.data.token);
         dispatch({ type: EDIT_SUCCESS, payload: res.data });
       })
       .catch((err) => {
