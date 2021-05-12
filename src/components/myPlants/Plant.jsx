@@ -37,7 +37,7 @@ const Plant = ({ plant, plantEditor, plantDelete }) => {
     <PlantStyles>
       <div className="cardContainer" key={plant.id}>
         <img
-          src={plant.img ? plant.img : "https://bit.ly/3frwdyF"}
+          src={plant.img ? plant.img : "https://bit.ly/3hiJ3A3"}
           alt="personal plant"
           className="plantImg"
         />
