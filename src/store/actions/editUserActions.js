@@ -5,7 +5,7 @@ export const EDIT_FAIL = "EDIT_FAIL";
 export const editUserData = (id, user) => {
   return (dispatch) => {
     axiosWithAuth()
-      .patch(`https://watermyplant-tt7.herokuapp.com/users/user/${id}`, user)
+      .put(`/auth`, user)
       .then((res) => {
         console.log(res);
         dispatch({ type: EDIT_SUCCESS, payload: res.data });

@@ -5,6 +5,9 @@ import { editUserData } from "../../store/actions/editUserActions";
 import SignupSchema from "../validation/formSchema";
 import ProfileStyles from "./profileStyling";
 import { fetchUser } from "../../store/actions/loginActions";
+import Button from '@material-ui/core/Button';
+
+
 
 const UserProfile = () => {
   const loginInfo = useSelector((state) => state.loginReducer);
@@ -28,6 +31,16 @@ const UserProfile = () => {
     }
   };
 
+  if(!loginInfo.userData.email) {
+    return (
+      <ProfileStyles>   
+        <div className="cardContainer">
+              <p> LOADING.... </p>
+            </div>
+      </ProfileStyles>
+    )
+  }
+
   return (
     <div>
       <ProfileStyles>
@@ -40,7 +53,6 @@ const UserProfile = () => {
               }}
               validationSchema={SignupSchema}
               onSubmit={(values) => {
-                console.log(values);
                 dispatch(editUserData(loginInfo.userData.userid, values));
               }}
             >
@@ -53,19 +65,19 @@ const UserProfile = () => {
                 <Field name="password" type="text" />
                 <ErrorMessage name="password" />
 
-                <button onClick={() => setIsEditing(false)}> Cancel </button>
+                <Button onClick={() => setIsEditing(false)}> Cancel </Button>
 
-                <button type="submit">Submit</button>
+                <Button type="submit">Submit</Button>
               </Form>
             </Formik>
           ) : (
             <div>
               <p> email: {loginInfo.userData.email} </p>
               <p> Password: {loginInfo.userData.password} </p>
-              <button onClick={() => setIsEditing(true)}>
+              <Button onClick={() => setIsEditing(true)}>
                 {" "}
                 Edit User Info
-              </button>
+              </Button>
             </div>
           )}
         </div>

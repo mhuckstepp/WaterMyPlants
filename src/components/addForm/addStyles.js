@@ -15,6 +15,7 @@ const AddFormStyles = styled.div`
     border-radius: 20px;
     opacity: 0.9;
     box-sizing: border-box;
+    z-index: 2;
   }
   .childAddContainer {
     position: fixed;
@@ -25,6 +26,7 @@ const AddFormStyles = styled.div`
     text-align: center;
     border-radius: 20px;
     box-sizing: border-box;
+    z-index: 3;
   }
   .innerForm {
     width: 50%;
@@ -42,6 +44,7 @@ const AddFormStyles = styled.div`
     border: none;
     color: white;
     margin: 10px;
+    font-weight: lighter
   }
   @media only screen and (max-width: 500px) {
     img {

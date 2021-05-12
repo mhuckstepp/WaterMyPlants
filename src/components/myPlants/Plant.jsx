@@ -2,6 +2,7 @@ import React from "react";
 import PlantStyles from "./plantStyling";
 import { useDispatch } from "react-redux";
 import { editPlant } from "../../store/actions/plantActions";
+import Button from '@material-ui/core/Button';
 
 const Plant = ({ plant, plantEditor, plantDelete }) => {
   const dispatch = useDispatch();
@@ -48,22 +49,22 @@ const Plant = ({ plant, plantEditor, plantDelete }) => {
         <p className="watering">
           Days until water: <br></br> <span> {waterResult} </span>{" "}
         </p>
-        <button className="waterBut" onClick={() => clickOnWater()}>
+        <Button className="waterBut" onClick={() => clickOnWater()}>
           {" "}
           I just watered{" "}
-        </button>
+        </Button>
         <div className="buttonContainer">
-          <button
+          <Button
             className="deleteBut"
             onClick={() => plantDelete(plant.id)}
           >
             {" "}
             DELETE{" "}
-          </button>
-          <button className="editBut" onClick={() => plantEditor(plant)}>
+          </Button>
+          <Button onClick={() => plantEditor(plant)}>
             {" "}
             EDIT{" "}
-          </button>
+          </Button>
         </div>
       </div>
     </PlantStyles>

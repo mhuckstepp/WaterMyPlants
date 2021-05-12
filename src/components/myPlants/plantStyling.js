@@ -15,6 +15,7 @@ const PlantStyles = styled.div`
     grid-template-areas: "image";
     margin: 2rem 2rem;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    z-index: 1;
   }
   .plantImg {
     grid-area: image;
@@ -45,17 +46,17 @@ const PlantStyles = styled.div`
     justify-content: space-around;
   }
   button {
-    width: 5rem;
-    background: green;
+    background: #228B22;
     border-radius: 3px;
     border: none;
-    color: white;
-    margin-top: 20px;
+    color: black;
   }
   .waterBut {
-    margin: 0 auto;
     background-color: lightblue;
     margin-top: 5px;
+    width: 50%;
+    margin: .8rem auto;
+    font-weight: 300;
   }
 `;
 

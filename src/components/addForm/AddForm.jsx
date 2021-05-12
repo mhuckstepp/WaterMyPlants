@@ -25,7 +25,6 @@ const AddForm = ({ setAdding }) => {
     },
       validationSchema: plantSchema,
       onSubmit: (values) => {
-        console.log('run ')
         dispatch(addPlant(values));
         setTimeout(setAdding(false), 2000);
       },

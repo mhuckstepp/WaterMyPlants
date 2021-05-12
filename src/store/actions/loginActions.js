@@ -32,7 +32,6 @@ export const fetchUser = (user) => {
     axiosWithAuth()
       .get("/auth")
       .then((res) => {
-        console.log(res);
         dispatch({ type: FETCH_USER, payload: res.data });
       })
       .catch((err) => {
