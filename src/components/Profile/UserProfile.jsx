@@ -7,6 +7,7 @@ import ProfileStyles from "./profileStyling";
 import { fetchUser } from "../../store/actions/loginActions";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import NavBar from "../navBar/NavBar";
 
 
 
@@ -55,6 +56,7 @@ const UserProfile = () => {
 
   return (
     <div>
+    <NavBar></NavBar>
       <ProfileStyles>
         <div className="cardContainer">
           {isEditing ? (

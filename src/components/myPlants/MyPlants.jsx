@@ -6,6 +6,7 @@ import EditForm from "../editForm/EditForm";
 import Plant from "./Plant";
 import MyPlantsStyles from "./myPlantsStyling";
 import { createMuiTheme } from '@material-ui/core/styles';
+import NavBar from "../navBar/NavBar";
 
 const theme = createMuiTheme({
   palette: {
@@ -66,6 +67,8 @@ const MyPlants = () => {
   };
 
   return (
+    <div>
+    <NavBar></NavBar>
     <MyPlantsStyles >
       {adding ? (
         <AddForm setAdding={setAdding} />
@@ -94,6 +97,7 @@ const MyPlants = () => {
         </div>
       </div>
     </MyPlantsStyles>
+    </div>
   );
 };
 

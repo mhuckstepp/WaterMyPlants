@@ -13,7 +13,7 @@ const ProfileStyles = styled.div`
     justify-content: center;
     align-items: center;
     width: 40%;
-    margin: 2rem 2rem;
+    margin: 10rem 2rem;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
   }
   button{
