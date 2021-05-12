@@ -5,7 +5,6 @@ import AddForm from "../addForm/AddForm";
 import EditForm from "../editForm/EditForm";
 import Plant from "./Plant";
 import MyPlantsStyles from "./myPlantsStyling";
-import Button from '@material-ui/core/Button';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
