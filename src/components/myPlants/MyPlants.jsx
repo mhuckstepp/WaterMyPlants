@@ -79,6 +79,7 @@ const MyPlants = () => {
       <div className="myPlantsContainer" theme={theme}>
         <h1> MyPlants </h1>
         <button className='addPlant' onClick={() => plantAdder()}> Add a plant</button>
+        {!myPlants.length && <h1> Use the button above to add your first plant!</h1> }
         <div className="plantContainer">
           {isLoading ? (
             <div class="loader">Loading...</div>

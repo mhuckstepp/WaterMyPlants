@@ -1,6 +1,5 @@
 import "./index.css";
 import MyPlants from "./components/myPlants/MyPlants";
-import NavBar from "./components/navBar/NavBar";
 import { Switch, Route } from "react-router-dom";
 import Login from "./components/Login/UserLogin";
 import SignUp from "./components/Login/Signup";
@@ -14,7 +13,6 @@ function App() {
   
   return (
     <div className="App">
-      {state.isLoggedIn ? <NavBar /> : null}
       <Switch>
         <Route exact path="/">
           <Login />

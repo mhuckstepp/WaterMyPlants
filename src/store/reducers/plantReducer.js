@@ -10,14 +10,6 @@ import {
 
 const initialData = {
   myPlants: [
-    {
-      id: 500,
-      nickname: " Add your first plant using the button above!",
-      species: "Your plant here!",
-      water_freq: 10,
-      base_date: '5646546546'
-      // image: (optional)
-    },
   ],
   isLoading: false,
   errorMessage: "",
