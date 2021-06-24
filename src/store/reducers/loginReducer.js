@@ -42,6 +42,7 @@ export const loginReducer = (state = initialValue, action) => {
         loginError: action.payload,
       };
     case EDIT_SUCCESS:
+      console.log(action.payload);
       return { ...state, userData: action.payload };
     case EDIT_FAIL:
       return { ...state, loginError: action.payload };
