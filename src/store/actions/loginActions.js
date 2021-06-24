@@ -16,13 +16,12 @@ export const setUserData = (user) => {
     axios
       .post("https://mywaterplants.herokuapp.com/api/auth/login", user)
       .then((res) => {
-        // console.log(res.data);
         localStorage.setItem("token", res.data.token);
         dispatch({ type: LOG_IN_SUCCESS });
       })
       .catch((err) => {
-        console.log(err)
-        dispatch({ type: LOG_IN_FAIL, payload: 'fail' });
+        console.log(err);
+        dispatch({ type: LOG_IN_FAIL, payload: "fail" });
       });
   };
 };

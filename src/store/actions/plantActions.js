@@ -25,11 +25,9 @@ export const fetchPlants = (id) => {
 
 export const addPlant = (plant) => {
   return (dispatch) => {
-    console.log(plant)
     axiosWithAuth()
       .post(`/plants`, plant)
       .then((res) => {
-        console.log(res)
         dispatch({ type: ADD_PLANT, payload: res.data });
       })
       .catch((err) => {
@@ -42,10 +40,7 @@ export const addPlant = (plant) => {
 export const editPlant = (plant) => {
   return (dispatch) => {
     axiosWithAuth()
-      .put(
-        `/plants/${plant.id}`,
-        plant
-      )
+      .put(`/plants/${plant.id}`, plant)
       .then((res) => {
         dispatch({ type: EDIT_PLANT, payload: res.data });
       })

@@ -7,12 +7,10 @@ export const editUserData = (user) => {
     axiosWithAuth()
       .put(`/auth`, user)
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.data.token);
         dispatch({ type: EDIT_SUCCESS, payload: res.data.user });
       })
       .catch((err) => {
-        console.log(err);
         dispatch({ type: EDIT_FAIL, payload: err });
       });
   };
