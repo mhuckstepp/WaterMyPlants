@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Tag = styled.span`
+    display: inline-block;
+    padding: .5em;
+    
+`;
+
 const UserLoginStyles = styled.div`
   .loginHeader {
     display: flex;

@@ -2,12 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signInFunc } from "../../store/actions/loginActions";
 import { Link, useHistory } from "react-router-dom";
-import { useFormik } from 'formik';
+import { useFormik } from "formik";
 import SignupStyles from "./SignupStyles";
 import userSchema from "../validation/formSchema";
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 const SignUp = (props) => {
   const dispatch = useDispatch();
@@ -22,37 +21,39 @@ const SignUp = (props) => {
     initialValues: {
       email: "",
       password: "",
-      },
-      validationSchema: userSchema,
-      onSubmit: (values) => {
-        dispatch(signInFunc(values));
+    },
+    validationSchema: userSchema,
+    onSubmit: (values) => {
+      dispatch(signInFunc(values));
     },
   });
   return (
     <SignupStyles>
       <div className="Sign-Up">
         <div className="textContainer">
-        {state.loginError && <p className='error'> {state.loginError.response.data}  </p>}
+          {state.loginError && (
+            <p className="error"> {state.loginError.response.data} </p>
+          )}
           <h2 className="signupHeader">Sign-up Today!</h2>
           <form onSubmit={formik.handleSubmit}>
             <TextField
-              fullWidth 
-              id="email" 
-              name="email" 
+              fullWidth
+              id="email"
+              name="email"
               label="Email"
-              type="text" 
+              type="text"
               value={formik.values.email}
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
               helperText={formik.touched.email && formik.errors.email}
             />
             <TextField
-              fullWidth 
-              id="password" 
-              name="password" 
+              fullWidth
+              id="password"
+              name="password"
               label="Password"
-              type="password" 
-              autoComplete='password'
+              type="password"
+              autoComplete="password"
               value={formik.values.password}
               onChange={formik.handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
@@ -62,8 +63,11 @@ const SignUp = (props) => {
               Submit
             </Button>
           </form>
-          <Link to="/">
-          <p className='link'> if you already have an account, click here to Login! </p>
+          <Link to="/login">
+            <p className="link">
+              {" "}
+              if you already have an account, click here to Login!{" "}
+            </p>
           </Link>
         </div>
       </div>
