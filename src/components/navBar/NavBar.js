@@ -9,11 +9,11 @@ const NavBar = (props) => {
 
   return (
     <NavBarStyles>
-       <NavLink to="/profile">Profile</NavLink> 
+      <NavLink to="/profile">Profile</NavLink>
       <NavLink to="/myplants">My Plants</NavLink>
-        <NavLink to="/">
-          <span onClick={() => dispatch(signOutFunc())}>Sign Out</span>
-        </NavLink>
+      <NavLink to="/login">
+        <span onClick={() => dispatch(signOutFunc())}>Sign Out</span>
+      </NavLink>
     </NavBarStyles>
   );
 };
