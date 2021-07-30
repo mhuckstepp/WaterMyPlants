@@ -21,9 +21,11 @@ const SignUp = (props) => {
     initialValues: {
       email: "",
       password: "",
+      city: "",
     },
     validationSchema: userSchema,
     onSubmit: (values) => {
+      console.log(values);
       dispatch(signInFunc(values));
     },
   });
@@ -58,6 +60,17 @@ const SignUp = (props) => {
               onChange={formik.handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
+            />
+            <TextField
+              fullWidth
+              id="city"
+              name="city"
+              label="City"
+              type="text"
+              value={formik.values.city}
+              onChange={formik.handleChange}
+              error={formik.touched.city && Boolean(formik.errors.city)}
+              helperText={formik.touched.city && formik.errors.city}
             />
             <Button color="primary" variant="contained" fullWidth type="submit">
               Submit
