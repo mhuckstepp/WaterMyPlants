@@ -9,5 +9,6 @@ export default yup.object().shape({
   password: yup
     .string()
     .required("Password is required")
-    .min(4, "Password must be 4 characters long"),
+    .min(4, "Password must be at least 4 characters long"),
+  city: yup.string().min(2, "city must be at least 2 characters long"),
 });

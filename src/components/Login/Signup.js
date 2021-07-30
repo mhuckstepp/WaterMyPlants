@@ -25,7 +25,6 @@ const SignUp = (props) => {
     },
     validationSchema: userSchema,
     onSubmit: (values) => {
-      console.log(values);
       dispatch(signInFunc(values));
     },
   });
