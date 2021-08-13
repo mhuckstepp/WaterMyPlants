@@ -18,10 +18,10 @@ const AddForm = ({ setAdding }) => {
     <AddFormStyles>
       <div className="addFormContainer"></div>
       <div className="childAddContainer">
-        <h1 style={{ margin: "15% 0" }}>
-          {" "}
-          Signup or Login to manage your own plants!{" "}
+        <h1 className='mockTitle'>
+          Signup or Login to manage your own plants!
         </h1>
+        <div className='innerForm'>
         <div className="buttonContainer">
           <Button
             color="primary"
@@ -39,6 +39,7 @@ const AddForm = ({ setAdding }) => {
           >
             Login
           </Button>
+          </div>
         </div>
       </div>
     </AddFormStyles>

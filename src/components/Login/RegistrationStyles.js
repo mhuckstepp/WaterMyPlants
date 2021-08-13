@@ -6,7 +6,7 @@ export const Tag = styled.span`
     
 `;
 
-const UserLoginStyles = styled.div`
+const RegistrationStyles = styled.div`
   .loginHeader {
     display: flex;
     justify-content: center;
@@ -28,6 +28,21 @@ const UserLoginStyles = styled.div`
     background-size: cover;
     margin-top: -1rem;
   }
+  .textContainer {
+    border-radius: 10px;
+    opacity: 0.7;
+    background: #e6e6e6;
+    width: 75%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 65vh;
+    align-items: center;
+    padding-bottom: 5px;
+    max-width: 70%;
+    margin: 0 auto;
+  }
   .textContainer h1 {
     font-size: 4rem;
     text-align: center;
@@ -36,21 +51,6 @@ const UserLoginStyles = styled.div`
   .textContainer p {
     margin-top: -2rem;
     text-align: center;
-  }
-  .textContainer {
-    border-radius: 10px;
-    opacity: 0.7;
-    background: #e6e6e6;
-    width: 70%;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 80vh;
-    align-items: center;
-    padding-bottom: 5px;
-    max-width: 70%;
-    margin: 0 auto;
   }
   .form {
     display: flex;
@@ -97,4 +97,4 @@ const UserLoginStyles = styled.div`
   }
 `
 
-export default UserLoginStyles;
+export default RegistrationStyles;

@@ -6,23 +6,24 @@ const AddFormStyles = styled.div`
   }
   .addFormContainer {
     position: fixed;
-    top: 10%;
+    top: 25%;
     left: 10%;
-    height: 80vh;
+    height: 30vh;
     width: 80%;
     background: lightgray;
     text-align: center;
     border-radius: 20px;
-    opacity: 0.9;
+    opacity: 0.7;
     box-sizing: border-box;
     z-index: 2;
   }
   .childAddContainer {
     position: fixed;
-    top: 10%;
+    top: 25%;
     left: 10%;
-    height: 80vh;
+    height: 30vh;
     width: 80%;
+    opacity: 0.9;
     text-align: center;
     border-radius: 20px;
     box-sizing: border-box;
@@ -36,6 +37,9 @@ const AddFormStyles = styled.div`
     align-items: center;
     margin: 0 auto;
   }
+  .mockTitle {
+    margin-top: 10vh;
+  }
   button {
     width: 6rem;
     height: 2rem;
@@ -44,7 +48,7 @@ const AddFormStyles = styled.div`
     border: none;
     color: white;
     margin: 10px;
-    font-weight: lighter
+    font-weight: lighter;
   }
   @media only screen and (max-width: 500px) {
     img {

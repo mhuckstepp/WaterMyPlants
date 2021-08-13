@@ -1,4 +1,4 @@
-To create a new component make a copy of the templateComponent folder which contains boilderplate functional component returning a styled-component wrapping some text
+To create a new component make a copy of the templateComponent folder which contains boilerplate functional component returning a styled-component wrapping some text
 Rename the folder
 Rename both files
 Change the values that are marked in comments

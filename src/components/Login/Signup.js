@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signInFunc } from "../../store/actions/loginActions";
 import { Link, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
-import SignupStyles from "./SignupStyles";
+import RegistrationStyles from "./RegistrationStyles";
 import userSchema from "../validation/formSchema";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -29,13 +29,18 @@ const SignUp = (props) => {
     },
   });
   return (
-    <SignupStyles>
-      <div className="Sign-Up">
+    <RegistrationStyles>
+      <div className="Login">
         <div className="textContainer">
           {state.loginError && (
             <p className="error"> {state.loginError.response.data} </p>
           )}
-          <h2 className="signupHeader">Sign-up Today!</h2>
+          <h1> Water Your Plants </h1>
+          <p>
+            {" "}
+            The place to go to manage your family of plants and their watering schedules!{" "}
+          </p>
+          <h2 className="loginHeader">Sign-up Today!</h2>
           <form onSubmit={formik.handleSubmit}>
             <TextField
               fullWidth
@@ -76,14 +81,11 @@ const SignUp = (props) => {
             </Button>
           </form>
           <Link to="/login">
-            <p className="link">
-              {" "}
-              if you already have an account, click here to Login!{" "}
-            </p>
+              if you already have an account, click here to Login!
           </Link>
         </div>
       </div>
-    </SignupStyles>
+    </RegistrationStyles>
   );
 };
 export default SignUp;

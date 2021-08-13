@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../store/actions/loginActions";
 import { useHistory, Link } from "react-router-dom";
-import UserLoginStyles from "./UserLoginStyles";
+import RegistrationStyles from "./RegistrationStyles";
 import { useFormik } from 'formik';
 import userSchema from "../validation/formSchema";
 import Button from '@material-ui/core/Button';
@@ -31,7 +31,7 @@ const Login = (props) => {
   });
 
   return (
-    <UserLoginStyles>
+    <RegistrationStyles>
       <div className="Login">
         <div className="textContainer">
           {loadingLogin ? <span className="loading"> Loading... </span> : null}
@@ -81,7 +81,7 @@ const Login = (props) => {
           </Link>
         </div>
       </div>
-    </UserLoginStyles>
+    </RegistrationStyles>
   );
 };
 export default Login;

@@ -61,7 +61,7 @@ const MyPlants = () => {
   useEffect(() => {
     setTimeout(function () {
       setIsLoading(false);
-    }, 1000);
+    }, 750);
   }, []);
 
   const plantEditor = () => {

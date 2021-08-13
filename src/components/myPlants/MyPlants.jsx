@@ -5,26 +5,25 @@ import AddForm from "../addForm/AddForm";
 import EditForm from "../editForm/EditForm";
 import Plant from "./Plant";
 import MyPlantsStyles from "./myPlantsStyling";
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "../navBar/NavBar";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#757ce8',
-      main: '#00FF00',
-      dark: '#002884',
-      contrastText: '#fff',
+      light: "#757ce8",
+      main: "#00FF00",
+      dark: "#002884",
+      contrastText: "#fff",
     },
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
+      light: "#ff7961",
+      main: "#f44336",
+      dark: "#ba000d",
+      contrastText: "#000",
     },
   },
 });
-
 
 const MyPlants = () => {
   const { myPlants, isLoading } = useSelector((state) => state.plantReducer);
@@ -68,36 +67,39 @@ const MyPlants = () => {
 
   return (
     <div>
-    <NavBar></NavBar>
-    <MyPlantsStyles >
-      {adding ? (
-        <AddForm setAdding={setAdding} />
-      ) : null}
+      <NavBar></NavBar>
+      <MyPlantsStyles>
+        {adding ? <AddForm setAdding={setAdding} /> : null}
         {editing ? (
           <EditForm plant={plantEditing} setEditing={setEditing} />
         ) : null}
-      <div className="myPlantsContainer" theme={theme}>
-        <h1> MyPlants </h1>
-        <button className='addPlant' onClick={() => plantAdder()}> Add a plant</button>
-        {!myPlants.length && <h1> Use the button above to add your first plant!</h1> }
-        <div className="plantContainer">
-          {isLoading ? (
-            <div class="loader">Loading...</div>
-          ) : (
-            myPlants.map((plant) => {
-              return (
-                <Plant
-                  plant={plant}
-                  plantEditor={plantEditor}
-                  plantDelete={plantDelete}
-                  key={plant.id}
-                />
-              );
-            })
-          )}{" "}
+        <div className="myPlantsContainer" theme={theme}>
+          <h1> MyPlants </h1>
+          <button className="addPlant" onClick={() => plantAdder()}>
+            {" "}
+            Add a plant
+          </button>
+          {!myPlants.length && (
+            <h1> Use the button above to add your first plant!</h1>
+          )}
+          <div className="plantContainer">
+            {isLoading ? (
+              <div className="loader">Loading...</div>
+            ) : (
+              myPlants.map((plant) => {
+                return (
+                  <Plant
+                    plant={plant}
+                    plantEditor={plantEditor}
+                    plantDelete={plantDelete}
+                    key={plant.id}
+                  />
+                );
+              })
+            )}{" "}
+          </div>
         </div>
-      </div>
-    </MyPlantsStyles>
+      </MyPlantsStyles>
     </div>
   );
 };
