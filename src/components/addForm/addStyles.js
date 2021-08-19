@@ -6,9 +6,9 @@ const AddFormStyles = styled.div`
   }
   .addFormContainer {
     position: fixed;
-    top: 25%;
+    top: 15%;
     left: 10%;
-    height: 30vh;
+    height: 70vh;
     width: 80%;
     background: lightgray;
     text-align: center;
@@ -21,7 +21,7 @@ const AddFormStyles = styled.div`
     position: fixed;
     top: 25%;
     left: 10%;
-    height: 30vh;
+    height: 70vh;
     width: 80%;
     opacity: 0.9;
     text-align: center;
